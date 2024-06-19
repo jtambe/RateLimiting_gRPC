@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option csharp_namespace = "gRPC_RateLimiter_Client";
+
+package greet;
+
+// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply);
+  rpc SayHelloSliding (HelloRequest) returns (HelloReply);
+  rpc SayHelloList (HelloRequest) returns (HelloReplyList);
+  rpc SayHelloDictionary (HelloRequest) returns (HelloReplyDictionary);
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings.
+message HelloReply {
+  string message = 1;
+}
+
+message HelloReplyList {
+  repeated string messages = 1;
+}
+
+message HelloReplyDictionary {
+  map <int32,string> messages = 1;
+}
